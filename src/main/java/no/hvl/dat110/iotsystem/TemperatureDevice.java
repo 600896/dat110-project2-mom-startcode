@@ -32,13 +32,13 @@ public class TemperatureDevice {
 			
 			if(client.connect()) {
 				ConnectMsg connectMsg = new ConnectMsg("sensor");
-	            dispatcher.onConnect(connectMsg, ((Object) client).getConnection());
+	          //  dispatcher.onConnect(connectMsg, ((Object) client).getConnection());
 	            for (int i = 0; i < COUNT; i++) {
 	                // Simulate getting a temperature reading
-	                int temperature = sn.readTemperature();
+	             //   int temperature = sn.readTemperature();
 
 	                // Create a PublishMsg with the temperature reading
-	                PublishMsg publishMsg = new PublishMsg("temperature", "sensor", Integer.toString(temperature));
+	                PublishMsg publishMsg = new PublishMsg("temperature", "sensor", Integer.toString(0));
 
 	                // Publish the temperature reading
 	                dispatcher.onPublish(publishMsg);

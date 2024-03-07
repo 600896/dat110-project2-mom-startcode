@@ -34,7 +34,7 @@ public abstract class Test0Base {
 		
 		// allow broker to reaching waiting for incoming connections
 		try {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

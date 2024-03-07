@@ -4,7 +4,6 @@ public class SubscribeMsg extends Message {
 
 	// message sent from client to subscribe on a topic 
 	private String topic;
-	private String user;
 
     public SubscribeMsg(String user, String topic) {
     	super(MessageType.SUBSCRIBE, user);
@@ -14,7 +13,7 @@ public class SubscribeMsg extends Message {
 
 	@Override
 	public String toString() {
-		return "SubscribeMsg [topic=" + topic + ", user=" + user + "]";
+		return "SubscribeMsg [topic=" + topic  + "]";
 	}
 
 	public String getTopic() {
@@ -25,13 +24,6 @@ public class SubscribeMsg extends Message {
 		this.topic = topic;
 	}
 
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
 
 	// TODO:
 	// Implement object variables - a topic is required
