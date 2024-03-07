@@ -34,7 +34,7 @@ public abstract class Test0Base {
 		
 		// allow broker to reaching waiting for incoming connections
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -45,7 +45,7 @@ public abstract class Test0Base {
 	public void tearDown() throws Exception {
 		
 		try {
-			Thread.sleep(10000); // let the system run for a while
+			Thread.sleep(1000); // let the system run for a while
 			broker.join();
 			dispatcher.doStop();
 			dispatcher.join();
