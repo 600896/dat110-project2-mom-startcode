@@ -40,10 +40,8 @@ public class Storage {
 	
 	public ClientSession getSession(String user) {
 //		ConcurrentHashMap.newKeySet();
-		
-		ClientSession session = clients.get(user);
 
-		return session;
+        return clients.get(user);
 	}
 
 	public Set<String> getSubscribers(String topic) {
@@ -54,7 +52,6 @@ public class Storage {
 
 	public void addClientSession(String user, Connection connection) {
 
-		// TODO: add corresponding client session to the storage
 		// See ClientSession class
 		//ConcurrentHashMap.newKeySet();
 		ClientSession cs = new ClientSession(user, connection);
@@ -78,7 +75,6 @@ public class Storage {
 	//	CreateTopicMsg ct = new CreateTopicMsg(topi );
 		subscriptions.put(topic, ConcurrentHashMap.newKeySet());
 
-		// TODO: create topic in the storage
 	
 	}
 
@@ -91,11 +87,9 @@ public class Storage {
 	}
 
 	public void addSubscriber(String user, String topic) {
-		
-		
-		subscriptions.get(topic).add(user);
 
-		// TODO: add the user as subscriber to the topic
+		//if(subscriptions.get(topic) != null){
+			subscriptions.get(topic).add(user);
 		
 	}
 

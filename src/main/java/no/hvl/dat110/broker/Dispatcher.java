@@ -108,7 +108,6 @@ public class Dispatcher extends Stopable {
 
 	}
 
-	//feil
 	public void onCreateTopic(CreateTopicMsg msg) {
 
 		Logger.log("onCreateTopic:" + msg.toString());
@@ -116,15 +115,13 @@ public class Dispatcher extends Stopable {
 
 	}
 
-	//feil
 	public void onDeleteTopic(DeleteTopicMsg msg) {
 
 		Logger.log("onDeleteTopic:" + msg.toString());
 		storage.deleteTopic(msg.getTopic());
 	}
 
-	
-	//feil
+
 	public void onSubscribe(SubscribeMsg msg) {
 
 		Logger.log("onSubscribe:" + msg.toString());
@@ -138,22 +135,22 @@ public class Dispatcher extends Stopable {
 		storage.removeSubscriber(msg.getUser(), msg.getTopic());
 	}
 
-	//feil
 	@SuppressWarnings("unlikely-arg-type")
 	public void onPublish(PublishMsg msg) {
+
+		// topic and message is contained in the subscribe message
+		// messages must be sent using the corresponding client session objects
 
 		Logger.log("onPublish:" + msg.toString());
 		Collection<ClientSession> clients = storage.getSessions();
 		 String topic = msg.getTopic();
-		// topic and message is contained in the subscribe message
-		// messages must be sent using the corresponding client session objects
+
 		 for (ClientSession session : clients) {
-			 if(session.getUser() != null) {
 				 // Check if the session is subscribed to the topic
-				 if (Objects.equals(storage.getSubscribers(topic), Collections.singleton(session.getUser()))) {
+				 if (storage.getSubscribers(topic).contains(session.getUser())) {
 					 session.send(msg);
 				 }
-			 }
+
 		    }
 
 	}

@@ -33,7 +33,7 @@ public class MessagingClient {
 		} catch (IOException ex) {
 			
 			System.out.println("Messaging client: " + ex.getMessage());
-			ex.printStackTrace();
+
 
 		}
 		
